@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador - DogSpa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>🐕 DogSpa Admin</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Ver Sitio</a></li>
+                    <li><a href="admin.html" class="nav-link active">Panel Admin</a></li>
+                </ul>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Admin">
+                        <span>Admin</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="admin.html">Panel Admin</a>
+                        <a href="settings.html">Configuración</a>
+                        <a href="#" onclick="logout()">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-container">
+                <!-- Sidebar -->
+                <aside class="admin-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Panel Admin</h3>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="#dashboard" class="nav-item active" onclick="showAdminSection('dashboard')">📊 Dashboard</a></li>
+                            <li><a href="#reservations" class="nav-item" onclick="showAdminSection('reservations')">📅 Reservas</a></li>
+                            <li><a href="#services" class="nav-item" onclick="showAdminSection('services')">✂️ Servicios</a></li>
+                            <li><a href="#customers" class="nav-item" onclick="showAdminSection('customers')">👥 Clientes</a></li>
+                            <li><a href="#pets" class="nav-item" onclick="showAdminSection('pets')">🐾 Mascotas</a></li>
+                            <li><a href="#employees" class="nav-item" onclick="showAdminSection('employees')">👨‍💼 Empleados</a></li>
+                            <li><a href="#schedule" class="nav-item" onclick="showAdminSection('schedule')">🕒 Horarios</a></li>
+                            <li><a href="#reports" class="nav-item" onclick="showAdminSection('reports')">📈 Reportes</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="admin-main">
+                    <!-- Dashboard Overview -->
+                    <section id="dashboard" class="admin-section-content active">
+                        <h1>Dashboard General</h1>
+                        <div class="admin-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <div class="stat-content">
+                                    <h3>Reservas Hoy</h3>
+                                    <p class="stat-number">12</p>
+                                    <p class="stat-change positive">+20% vs ayer</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-content">
+                                    <h3>Ingresos del Mes</h3>
+                                    <p class="stat-number">$8,450</p>
+                                    <p class="stat-change positive">+15% vs mes pasado</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-content">
+                                    <h3>Clientes Nuevos</h3>
+                                    <p class="stat-number">45</p>
+                                    <p class="stat-change positive">+8% vs mes pasado</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🐾</div>
+                                <div class="stat-content">
+                                    <h3>Mascotas Atendidas</h3>
+                                    <p class="stat-number">238</p>
+                                    <p class="stat-change positive">+12% vs mes pasado</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="recent-activity">
+                            <h2>Actividad Reciente</h2>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-time">Hace 5 min</div>
+                                    <div class="activity-content">
+                                        <strong>Nueva reserva</strong> - María García agendó Spa Completo para Max
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">Hace 15 min</div>
+                                    <div class="activity-content">
+                                        <strong>Cliente nuevo</strong> - Carlos Rodríguez se ha registrado
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">Hace 30 min</div>
+                                    <div class="activity-content">
+                                        <strong>Pago recibido</strong> - $59.99 por Spa Completo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <h2>Acciones Rápidas</h2>
+                            <div class="actions-grid">
+                                <button class="action-card" onclick="showAdminSection('reservations')">
+                                    <span class="action-icon">📅</span>
+                                    <h3>Ver Reservas</h3>
+                                    <p>Gestionar citas del día</p>
+                                </button>
+                                <button class="action-card" onclick="showAddServiceModal()">
+                                    <span class="action-icon">➕</span>
+                                    <h3>Agregar Servicio</h3>
+                                    <p>Crear nuevo servicio</p>
+                                </button>
+                                <button class="action-card" onclick="showAdminSection('reports')">
+                                    <span class="action-icon">📊</span>
+                                    <h3>Generar Reporte</h3>
+                                    <p>Ver estadísticas</p>
+                                </button>
+                                <button class="action-card" onclick="showAdminSection('schedule')">
+                                    <span class="action-icon">🕒</span>
+                                    <h3>Configurar Horarios</h3>
+                                    <p>Administrar disponibilidad</p>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Reservations Management -->
+                    <section id="reservations" class="admin-section-content">
+                        <div class="section-header">
+                            <h1>Gestión de Reservas</h1>
+                            <div class="section-actions">
+                                <input type="date" id="filterDate" class="form-input">
+                                <select id="filterStatus" class="form-input">
+                                    <option value="all">Todos los estados</option>
+                                    <option value="pending">Pendientes</option>
+                                    <option value="confirmed">Confirmadas</option>
+                                    <option value="cancelled">Canceladas</option>
+                                </select>
+                                <button class="btn btn-primary" onclick="showAddReservationModal()">Nueva Reserva</button>
+                            </div>
+                        </div>
+
+                        <div class="reservations-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Cliente</th>
+                                        <th>Mascota</th>
+                                        <th>Servicio</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reservationsTableBody">
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>María García</td>
+                                        <td>Max</td>
+                                        <td>Spa Completo</td>
+                                        <td>20/10/2024</td>
+                                        <td>10:00 AM</td>
+                                        <td><span class="status-badge confirmed">Confirmada</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary">Editar</button>
+                                            <button class="btn btn-sm btn-danger">Cancelar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#002</td>
+                                        <td>Carlos Rodríguez</td>
+                                        <td>Luna</td>
+                                        <td>Baño Completo</td>
+                                        <td>20/10/2024</td>
+                                        <td>11:00 AM</td>
+                                        <td><span class="status-badge pending">Pendiente</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Confirmar</button>
+                                            <button class="btn btn-sm btn-secondary">Editar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Services Management -->
+                    <section id="services" class="admin-section-content">
+                        <div class="section-header">
+                            <h1>Gestión de Servicios</h1>
+                            <button class="btn btn-primary" onclick="showAddServiceModal()">Agregar Servicio</button>
+                        </div>
+
+                        <div class="services-grid">
+                            <div class="service-card-admin">
+                                <div class="service-info">
+                                    <h3>Baño Completo</h3>
+                                    <p>Baño con shampoo premium, secado y cepillado completo</p>
+                                    <div class="service-details">
+                                        <span class="price">$25.99</span>
+                                        <span class="duration">60 min</span>
+                                    </div>
+                                </div>
+                                <div class="service-actions">
+                                    <button class="btn btn-sm btn-secondary">Editar</button>
+                                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                            <div class="service-card-admin">
+                                <div class="service-info">
+                                    <h3>Corte de Pelo</h3>
+                                    <p>Corte profesional según raza y estilo preferido</p>
+                                    <div class="service-details">
+                                        <span class="price">$35.99</span>
+                                        <span class="duration">90 min</span>
+                                    </div>
+                                </div>
+                                <div class="service-actions">
+                                    <button class="btn btn-sm btn-secondary">Editar</button>
+                                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Customers Management -->
+                    <section id="customers" class="admin-section-content">
+                        <div class="section-header">
+                            <h1>Gestión de Clientes</h1>
+                            <div class="section-actions">
+                                <input type="text" placeholder="Buscar cliente..." class="form-input">
+                                <button class="btn btn-primary" onclick="showAddCustomerModal()">Agregar Cliente</button>
+                            </div>
+                        </div>
+
+                        <div class="customers-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Mascotas</th>
+                                        <th>Reservas</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>María García</td>
+                                        <td>maria@email.com</td>
+                                        <td>+1 234 567 890</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary">Ver Detalles</button>
+                                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Pets Management -->
+                    <section id="pets" class="admin-section-content">
+                        <div class="section-header">
+                            <h1>Gestión de Mascotas</h1>
+                            <button class="btn btn-primary" onclick="showAddPetModal()">Agregar Mascota</button>
+                        </div>
+
+                        <div class="pets-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Raza</th>
+                                        <th>Dueño</th>
+                                        <th>Edad</th>
+                                        <th>Peso</th>
+                                        <th>Notas</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>Max</td>
+                                        <td>Golden Retriever</td>
+                                        <td>María García</td>
+                                        <td>3 años</td>
+                                        <td>30 kg</td>
+                                        <td>Alergico a pollo</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary">Editar</button>
+                                            <button class="btn btn-sm btn-danger">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Employees Management -->
+                    <section id="employees" class="admin-section-content">
+                        <div class="section-header">
+                            <h1>Gestión de Empleados</h1>
+                            <button class="btn btn-primary" onclick="showAddEmployeeModal()">Agregar Empleado</button>
+                        </div>
+
+                        <div class="employees-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Rol</th>
+                                        <th>Especialidad</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>Juan Pérez</td>
+                                        <td>juan@dogspa.com</td>
+                                        <td>Estilista</td>
+                                        <td>Corte de pelo</td>
+                                        <td><span class="status-badge active">Activo</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary">Editar</button>
+                                            <button class="btn btn-sm btn-danger">Desactivar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Schedule Management -->
+                    <section id="schedule" class="admin-section-content">
+                        <h1>Gestión de Horarios</h1>
+                        <div class="schedule-container">
+                            <div class="schedule-settings">
+                                <h3>Configuración de Horarios</h3>
+                                <div class="schedule-form">
+                                    <div class="form-group">
+                                        <label>Día de la semana</label>
+                                        <select class="form-input">
+                                            <option>Lunes</option>
+                                            <option>Martes</option>
+                                            <option>Miércoles</option>
+                                            <option>Jueves</option>
+                                            <option>Viernes</option>
+                                            <option>Sábado</option>
+                                            <option>Domingo</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Hora de apertura</label>
+                                        <input type="time" class="form-input" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Hora de cierre</label>
+                                        <input type="time" class="form-input" value="18:00">
+                                    </div>
+                                    <button class="btn btn-primary">Guardar Horario</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Reports Section -->
+                    <section id="reports" class="admin-section-content">
+                        <h1>Reportes y Estadísticas</h1>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <h3>Reporte de Ventas</h3>
+                                <div class="report-controls">
+                                    <select class="form-input">
+                                        <option>Este mes</option>
+                                        <option>Mes pasado</option>
+                                        <option>Este año</option>
+                                    </select>
+                                    <button class="btn btn-primary">Generar</button>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <h3>Reporte de Servicios</h3>
+                                <div class="report-controls">
+                                    <select class="form-input">
+                                        <option>Este mes</option>
+                                        <option>Mes pasado</option>
+                                        <option>Este año</option>
+                                    </select>
+                                    <button class="btn btn-primary">Generar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 DogSpa. Panel de Administración.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

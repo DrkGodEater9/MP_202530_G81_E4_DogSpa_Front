@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - DogSpa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>🐕 DogSpa</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="services.html" class="nav-link">Servicios</a></li>
+                    <li><a href="booking.html" class="nav-link">Reservar</a></li>
+                    <li><a href="login.html" class="nav-link active">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form-container">
+                    <!-- Login Form -->
+                    <div class="auth-form" id="loginForm">
+                        <h2>Bienvenido de Vuelto</h2>
+                        <p>Inicia sesión para gestionar tus reservas</p>
+                        
+                        <form id="loginFormElement" class="form">
+                            <div class="form-group">
+                                <label for="loginEmail">Email</label>
+                                <input type="email" id="loginEmail" name="email" required placeholder="tu@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="loginPassword">Contraseña</label>
+                                <input type="password" id="loginPassword" name="password" required placeholder="••••••••">
+                                <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                    👁️
+                                </button>
+                            </div>
+                            
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="remember">
+                                    <span class="checkmark"></span>
+                                    Recordarme
+                                </label>
+                                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">Iniciar Sesión</button>
+                            
+                            <div class="auth-divider">
+                                <span>o continúa con</span>
+                            </div>
+                            
+                            <div class="social-login">
+                                <button type="button" class="btn btn-social btn-google">
+                                    <span>🔍</span> Google
+                                </button>
+                                <button type="button" class="btn btn-social btn-facebook">
+                                    <span>📘</span> Facebook
+                                </button>
+                            </div>
+                            
+                            <div class="auth-switch">
+                                ¿No tienes cuenta? <a href="#" onclick="showRegisterForm()">Regístrate</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div class="auth-form" id="registerForm" style="display: none;">
+                        <h2>Crear Cuenta</h2>
+                        <p>Regístrate para empezar a reservar servicios</p>
+                        
+                        <form id="registerFormElement" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="registerName">Nombre</label>
+                                    <input type="text" id="registerName" name="name" required placeholder="Tu nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="registerLastName">Apellido</label>
+                                    <input type="text" id="registerLastName" name="lastName" required placeholder="Tu apellido">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="registerEmail">Email</label>
+                                <input type="email" id="registerEmail" name="email" required placeholder="tu@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="registerPhone">Teléfono</label>
+                                <input type="tel" id="registerPhone" name="phone" required placeholder="+1 234 567 890">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="registerPassword">Contraseña</label>
+                                <input type="password" id="registerPassword" name="password" required placeholder="••••••••">
+                                <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                    👁️
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="registerConfirmPassword">Confirmar Contraseña</label>
+                                <input type="password" id="registerConfirmPassword" name="confirmPassword" required placeholder="••••••••">
+                                <button type="button" class="password-toggle" onclick="togglePassword('registerConfirmPassword')">
+                                    👁️
+                                </button>
+                            </div>
+                            
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="terms" required>
+                                    <span class="checkmark"></span>
+                                    Acepto los <a href="#">términos y condiciones</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">Crear Cuenta</button>
+                            
+                            <div class="auth-divider">
+                                <span>o regístrate con</span>
+                            </div>
+                            
+                            <div class="social-login">
+                                <button type="button" class="btn btn-social btn-google">
+                                    <span>🔍</span> Google
+                                </button>
+                                <button type="button" class="btn btn-social btn-facebook">
+                                    <span>📘</span> Facebook
+                                </button>
+                            </div>
+                            
+                            <div class="auth-switch">
+                                ¿Ya tienes cuenta? <a href="#" onclick="showLoginForm()">Inicia sesión</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="auth-info">
+                    <div class="auth-info-content">
+                        <h2>🐕 Únete a DogSpa</h2>
+                        <p>Descubre todos los beneficios de tener una cuenta con nosotros:</p>
+                        
+                        <ul class="benefits-list">
+                            <li>
+                                <span class="benefit-icon">📅</span>
+                                <div>
+                                    <strong>Gestiona tus Reservas</strong>
+                                    <p>Ve, modifica o cancela tus citas fácilmente</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">🏆</span>
+                                <div>
+                                    <strong>Programa de Lealtad</strong>
+                                    <p>Acumula puntos y obtén descuentos exclusivos</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">🐾</span>
+                                <div>
+                                    <strong>Historial de Servicios</strong>
+                                    <p>Mantén un registro completo de los servicios de tu mascota</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">🎁</span>
+                                <div>
+                                    <strong>Ofertas Especiales</strong>
+                                    <p>Recibe promociones personalizadas y anticipadas</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">⚡</span>
+                                <div>
+                                    <strong>Reservas Rápidas</strong>
+                                    <p>Guarda tus datos y los de tus mascotas para reservas más rápidas</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="testimonial">
+                            <blockquote>
+                                "DogSpa ha transformado el cuidado de mi mascota. El servicio es excepcional y la aplicación hace todo muy fácil."
+                            </blockquote>
+                            <cite>- María García, Cliente Satisfecha</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🐕 DogSpa</h3>
+                    <p>El mejor spa para tu mascota con profesionales certificados y productos de calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="booking.html">Reservar</a></li>
+                        <li><a href="login.html">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📞 +1 234 567 890</p>
+                    <p>📧 info@dogspa.com</p>
+                    <p>📍 123 Calle Mascotas, Ciudad</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DogSpa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

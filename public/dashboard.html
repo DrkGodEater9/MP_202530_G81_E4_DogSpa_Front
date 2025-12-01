@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DogSpa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>🐕 DogSpa</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="services.html" class="nav-link">Servicios</a></li>
+                    <li><a href="booking.html" class="nav-link">Reservar</a></li>
+                    <li><a href="dashboard.html" class="nav-link active">Mi Cuenta</a></li>
+                </ul>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Usuario">
+                        <span>Juan Pérez</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="dashboard.html">Mi Dashboard</a>
+                        <a href="profile.html">Mi Perfil</a>
+                        <a href="settings.html">Configuración</a>
+                        <a href="#" onclick="logout()">Cerrar Sesión</a>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-container">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Mi Panel</h3>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="#overview" class="nav-item active" onclick="showSection('overview')">📊 Resumen</a></li>
+                            <li><a href="#reservations" class="nav-item" onclick="showSection('reservations')">📅 Mis Reservas</a></li>
+                            <li><a href="#pets" class="nav-item" onclick="showSection('pets')">🐾 Mis Mascotas</a></li>
+                            <li><a href="#history" class="nav-item" onclick="showSection('history')">📋 Historial</a></li>
+                            <li><a href="#loyalty" class="nav-item" onclick="showSection('loyalty')">🏆 Programa de Lealtad</a></li>
+                            <li><a href="#payments" class="nav-item" onclick="showSection('payments')">💳 Pagos</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="dashboard-main">
+                    <!-- Overview Section -->
+                    <section id="overview" class="dashboard-section-content active">
+                        <h1>Bienvenido, Juan Pérez</h1>
+                        <p>Aquí puedes gestionar todas tus reservas y servicios</p>
+                        
+                        <!-- Stats Cards -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <div class="stat-content">
+                                    <h3>Próxima Cita</h3>
+                                    <p class="stat-value">Mañana</p>
+                                    <p class="stat-detail">Spa Completo - Max</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🐾</div>
+                                <div class="stat-content">
+                                    <h3>Mascotas Registradas</h3>
+                                    <p class="stat-value">2</p>
+                                    <p class="stat-detail">Max y Luna</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🏆</div>
+                                <div class="stat-content">
+                                    <h3>Puntos Acumulados</h3>
+                                    <p class="stat-value">450</p>
+                                    <p class="stat-detail">A 50 puntos de premio</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-content">
+                                    <h3>Ahorro Total</h3>
+                                    <p class="stat-value">$125.50</p>
+                                    <p class="stat-detail">Con descuentos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <h2>Acciones Rápidas</h2>
+                            <div class="actions-grid">
+                                <button class="action-card" onclick="window.location.href='booking.html'">
+                                    <span class="action-icon">➕</span>
+                                    <h3>Nueva Reserva</h3>
+                                    <p>Agenda un nuevo servicio</p>
+                                </button>
+                                <button class="action-card" onclick="showSection('pets')">
+                                    <span class="action-icon">🐕</span>
+                                    <h3>Agregar Mascota</h3>
+                                    <p>Registra una nueva mascota</p>
+                                </button>
+                                <button class="action-card" onclick="window.location.href='services.html'">
+                                    <span class="action-icon">✂️</span>
+                                    <h3>Ver Servicios</h3>
+                                    <p>Explora nuestros servicios</p>
+                                </button>
+                                <button class="action-card" onclick="showSection('loyalty')">
+                                    <span class="action-icon">🎁</span>
+                                    <h3>Canjear Puntos</h3>
+                                    <p>Usa tus puntos acumulados</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="recent-activity">
+                            <h2>Actividad Reciente</h2>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">✅</div>
+                                    <div class="activity-content">
+                                        <h4>Reserva Completada</h4>
+                                        <p>Baño completo para Max - 15 de Octubre</p>
+                                        <span class="activity-date">Hace 2 días</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">🎁</div>
+                                    <div class="activity-content">
+                                        <h4>Puntos Ganados</h4>
+                                        <p>50 puntos por tu última visita</p>
+                                        <span class="activity-date">Hace 2 días</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">📅</div>
+                                    <div class="activity-content">
+                                        <h4>Nueva Reserva</h4>
+                                        <p>Spa completo para Max - 20 de Octubre</p>
+                                        <span class="activity-date">Hace 3 días</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Reservations Section -->
+                    <section id="reservations" class="dashboard-section-content">
+                        <h1>Mis Reservas</h1>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" onclick="window.location.href='booking.html'">Nueva Reserva</button>
+                        </div>
+                        
+                        <div class="reservations-tabs">
+                            <button class="tab-btn active" onclick="showReservationTab('upcoming')">Próximas</button>
+                            <button class="tab-btn" onclick="showReservationTab('past')">Pasadas</button>
+                            <button class="tab-btn" onclick="showReservationTab('cancelled')">Canceladas</button>
+                        </div>
+
+                        <div id="upcoming-reservations" class="reservations-list">
+                            <div class="reservation-card">
+                                <div class="reservation-header">
+                                    <div class="reservation-info">
+                                        <h3>Spa Completo</h3>
+                                        <p class="reservation-date">20 de Octubre, 2024 - 10:00 AM</p>
+                                    </div>
+                                    <div class="reservation-status confirmed">Confirmada</div>
+                                </div>
+                                <div class="reservation-details">
+                                    <div class="pet-info">
+                                        <img src="https://images.unsplash.com/photo-1583337134247-85d2795ece39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Max">
+                                        <div>
+                                            <strong>Max</strong>
+                                            <p>Golden Retriever - 3 años</p>
+                                        </div>
+                                    </div>
+                                    <div class="reservation-price">
+                                        <strong>$59.99</strong>
+                                    </div>
+                                </div>
+                                <div class="reservation-actions">
+                                    <button class="btn btn-secondary">Modificar</button>
+                                    <button class="btn btn-danger">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Pets Section -->
+                    <section id="pets" class="dashboard-section-content">
+                        <h1>Mis Mascotas</h1>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" onclick="showAddPetForm()">Agregar Mascota</button>
+                        </div>
+
+                        <div class="pets-grid">
+                            <div class="pet-card">
+                                <div class="pet-image">
+                                    <img src="https://images.unsplash.com/photo-1583337134247-85d2795ece39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Max">
+                                    <div class="pet-badge">Principal</div>
+                                </div>
+                                <div class="pet-info">
+                                    <h3>Max</h3>
+                                    <p class="pet-breed">Golden Retriever</p>
+                                    <p class="pet-details">3 años • 30 kg • Macho</p>
+                                    <div class="pet-tags">
+                                        <span class="tag">Vacunado</span>
+                                        <span class="tag">Esterilizado</span>
+                                    </div>
+                                </div>
+                                <div class="pet-actions">
+                                    <button class="btn btn-secondary">Editar</button>
+                                    <button class="btn btn-primary">Reservar</button>
+                                </div>
+                            </div>
+
+                            <div class="pet-card">
+                                <div class="pet-image">
+                                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Luna">
+                                </div>
+                                <div class="pet-info">
+                                    <h3>Luna</h3>
+                                    <p class="pet-breed">Husky Siberiano</p>
+                                    <p class="pet-details">2 años • 25 kg • Hembra</p>
+                                    <div class="pet-tags">
+                                        <span class="tag">Vacunado</span>
+                                        <span class="tag">Esterilizado</span>
+                                    </div>
+                                </div>
+                                <div class="pet-actions">
+                                    <button class="btn btn-secondary">Editar</button>
+                                    <button class="btn btn-primary">Reservar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- History Section -->
+                    <section id="history" class="dashboard-section-content">
+                        <h1>Historial de Servicios</h1>
+                        <div class="history-filters">
+                            <select id="historyFilter">
+                                <option value="all">Todos los servicios</option>
+                                <option value="bath">Baño</option>
+                                <option value="haircut">Corte</option>
+                                <option value="spa">Spa</option>
+                            </select>
+                            <input type="month" id="historyMonth" value="2024-10">
+                        </div>
+
+                        <div class="history-list">
+                            <div class="history-item">
+                                <div class="history-date">15 de Octubre, 2024</div>
+                                <div class="history-service">
+                                    <h4>Baño Completo</h4>
+                                    <p>Max - Golden Retriever</p>
+                                </div>
+                                <div class="history-price">$25.99</div>
+                                <div class="history-rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Loyalty Section -->
+                    <section id="loyalty" class="dashboard-section-content">
+                        <h1>Programa de Lealtad</h1>
+                        <div class="loyalty-card">
+                            <div class="loyalty-header">
+                                <h2>Tu Progreso</h2>
+                                <div class="points-display">
+                                    <span class="points-number">450</span>
+                                    <span class="points-label">puntos</span>
+                                </div>
+                            </div>
+                            <div class="loyalty-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                                <p>Estás a 50 puntos de tu siguiente premio</p>
+                            </div>
+                            <div class="loyalty-rewards">
+                                <h3>Próximos Premios</h3>
+                                <div class="reward-item">
+                                    <span class="reward-points">500 puntos</span>
+                                    <span class="reward-desc">10% de descuento en tu próxima visita</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-points">1000 puntos</span>
+                                    <span class="reward-desc">Spa gratuito para tu mascota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Payments Section -->
+                    <section id="payments" class="dashboard-section-content">
+                        <h1>Mis Pagos</h1>
+                        <div class="payment-methods">
+                            <h3>Métodos de Pago Guardados</h3>
+                            <div class="payment-card">
+                                <div class="payment-info">
+                                    <span class="payment-type">💳</span>
+                                    <div>
+                                        <strong>Visa terminada en 4242</strong>
+                                        <p>Expira: 12/25</p>
+                                    </div>
+                                </div>
+                                <div class="payment-actions">
+                                    <button class="btn btn-secondary">Editar</button>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🐕 DogSpa</h3>
+                    <p>El mejor spa para tu mascota con profesionales certificados y productos de calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="booking.html">Reservar</a></li>
+                        <li><a href="login.html">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📞 +1 234 567 890</p>
+                    <p>📧 info@dogspa.com</p>
+                    <p>📍 123 Calle Mascotas, Ciudad</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DogSpa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

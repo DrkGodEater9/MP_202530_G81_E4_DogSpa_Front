@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar - DogSpa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>🐕 DogSpa</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="services.html" class="nav-link">Servicios</a></li>
+                    <li><a href="booking.html" class="nav-link active">Reservar</a></li>
+                    <li><a href="login.html" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Reserva tu Cita</h1>
+            <p>Agenda una cita para consentir a tu mascota con nuestros servicios profesionales</p>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-form-container">
+                    <form id="bookingForm" class="booking-form">
+                        <h2>Información de la Reserva</h2>
+                        
+                        <!-- Paso 1: Información del Cliente -->
+                        <div class="form-step active" id="step1">
+                            <h3>1. Información del Cliente</h3>
+                            <div class="form-group">
+                                <label for="customerName">Nombre Completo *</label>
+                                <input type="text" id="customerName" name="customerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">Email *</label>
+                                <input type="email" id="customerEmail" name="customerEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">Teléfono *</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" required>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente</button>
+                        </div>
+
+                        <!-- Paso 2: Información de la Mascota -->
+                        <div class="form-step" id="step2">
+                            <h3>2. Información de la Mascota</h3>
+                            <div class="form-group">
+                                <label for="petName">Nombre de la Mascota *</label>
+                                <input type="text" id="petName" name="petName" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="petType">Tipo *</label>
+                                    <select id="petType" name="petType" required>
+                                        <option value="">Selecciona...</option>
+                                        <option value="dog">Perro</option>
+                                        <option value="cat">Gato</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="petBreed">Raza *</label>
+                                    <input type="text" id="petBreed" name="petBreed" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="petAge">Edad *</label>
+                                    <input type="text" id="petAge" name="petAge" placeholder="Ej: 2 años" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="petWeight">Peso (kg) *</label>
+                                    <input type="number" id="petWeight" name="petWeight" step="0.1" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="petGender">Género *</label>
+                                <select id="petGender" name="petGender" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="male">Macho</option>
+                                    <option value="female">Hembra</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="petNotes">Notas Especiales</label>
+                                <textarea id="petNotes" name="petNotes" rows="3" placeholder="Alergias, comportamiento especial, etc."></textarea>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep(1)">Anterior</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3: Selección de Servicios -->
+                        <div class="form-step" id="step3">
+                            <h3>3. Selecciona los Servicios</h3>
+                            <div class="services-selection">
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-bath" name="services" value="bath">
+                                    <label for="service-bath" class="service-label">
+                                        <div class="service-info">
+                                            <h4>Baño Completo</h4>
+                                            <p>Baño con shampoo premium, secado y cepillado</p>
+                                            <span class="service-price">$25.99</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-haircut" name="services" value="haircut">
+                                    <label for="service-haircut" class="service-label">
+                                        <div class="service-info">
+                                            <h4>Corte de Pelo</h4>
+                                            <p>Corte profesional según raza y estilo</p>
+                                            <span class="service-price">$35.99</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-spa" name="services" value="spa">
+                                    <label for="service-spa" class="service-label">
+                                        <div class="service-info">
+                                            <h4>Spa Completo</h4>
+                                            <p>Paquete completo con baño, corte y spa</p>
+                                            <span class="service-price">$59.99</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-dental" name="services" value="dental">
+                                    <label for="service-dental" class="service-label">
+                                        <div class="service-info">
+                                            <h4>Limpieza Dental</h4>
+                                            <p>Limpieza profesional de dientes y encías</p>
+                                            <span class="service-price">$19.99</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-deworming" name="services" value="deworming">
+                                    <label for="service-deworming" class="service-label">
+                                        <div class="service-info">
+                                            <h4>Desparasitación</h4>
+                                            <p>Tratamiento completo contra parásitos</p>
+                                            <span class="service-price">$15.99</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="total-price">
+                                <strong>Total: $<span id="totalPrice">0.00</span></strong>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep(2)">Anterior</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(4)">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4: Fecha y Hora -->
+                        <div class="form-step" id="step4">
+                            <h3>4. Selecciona Fecha y Hora</h3>
+                            <div class="form-group">
+                                <label for="bookingDate">Fecha *</label>
+                                <input type="date" id="bookingDate" name="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">Hora Preferida *</label>
+                                <select id="bookingTime" name="bookingTime" required>
+                                    <option value="">Selecciona una hora</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingNotes">Notas Adicionales</label>
+                                <textarea id="bookingNotes" name="bookingNotes" rows="3" placeholder="Instrucciones especiales o preferencias"></textarea>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep(3)">Anterior</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(5)">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <!-- Paso 5: Confirmación -->
+                        <div class="form-step" id="step5">
+                            <h3>5. Confirmación de Reserva</h3>
+                            <div class="booking-summary">
+                                <h4>Resumen de tu Reserva</h4>
+                                <div id="summaryContent">
+                                    <!-- El contenido se llenará dinámicamente -->
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep(4)">Anterior</button>
+                                <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="booking-info">
+                    <div class="info-card">
+                        <h3>🕒 Horario de Atención</h3>
+                        <ul>
+                            <li>Lunes a Viernes: 9:00 AM - 6:00 PM</li>
+                            <li>Sábados: 9:00 AM - 4:00 PM</li>
+                            <li>Domingos: Cerrado</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>📋 ¿Qué necesitas?</h3>
+                        <ul>
+                            <li>Identificación oficial</li>
+                            <li>Cartilla de vacunación</li>
+                            <li>Llegar 10 minutos antes</li>
+                            <li>No alimentar 2 horas antes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>💳 Métodos de Pago</h3>
+                        <ul>
+                            <li>Efectivo</li>
+                            <li>Tarjeta de crédito/débito</li>
+                            <li>Transferencia bancaria</li>
+                            <li>PayPal</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📞 ¿Preguntas?</h3>
+                        <p>Contáctanos si tienes alguna duda sobre nuestros servicios o el proceso de reserva.</p>
+                        <a href="tel:+1234567890" class="btn btn-secondary btn-full">Llamar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🐕 DogSpa</h3>
+                    <p>El mejor spa para tu mascota con profesionales certificados y productos de calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="booking.html">Reservar</a></li>
+                        <li><a href="login.html">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📞 +1 234 567 890</p>
+                    <p>📧 info@dogspa.com</p>
+                    <p>📍 123 Calle Mascotas, Ciudad</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DogSpa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>
